@@ -1,10 +1,11 @@
 import express from 'express'
+import postsRouter from './routes/posts.js'
 
 const app = express();
-app.listen(3000, () => { 
-    console.log("Servidor escutando...");
-})
 
-app.get('/api', (req, res) => {
-    res.status(200).send("Hello, World!")
+app.use(express.json())
+app.use('/posts', postsRouter)
+
+app.listen(3000, () => {
+    console.log("Servidor escutando...");
 })
